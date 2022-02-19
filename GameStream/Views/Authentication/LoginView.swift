@@ -7,9 +7,16 @@
 
 import SwiftUI
 
+class HomeActive: ObservableObject {
+    @Published var isHomeActive: Bool = false
+}
+
 struct LoginView: View {
+
+    @StateObject var object = HomeActive()
     @State var email: String = ""
     @State var password: String = ""
+    @State var isHomeActive: Bool = false
     
     var body: some View {
         ScrollView {
@@ -54,28 +61,35 @@ struct LoginView: View {
                     .foregroundColor(Color("DarkCyanColor"))
                     .padding(.bottom)
                 
+                Button {
+                    login(&isHomeActive)
+                } label: {
+                    Text("INICIAR SESIÓN")
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .padding(EdgeInsets(top: 11, leading: 18, bottom: 11, trailing: 18))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 6)
+                                .stroke(Color("DarkCyanColor"), lineWidth: 1)
+                                .shadow(color: .white, radius: 6)
+                        )
+                }
+                
                 LoginButtonsModule()
             }.padding(.horizontal)
+            
+            NavigationLink(
+                destination: HomeView(),
+                isActive: $isHomeActive) {
+                    EmptyView()
+                }
         }
     }
 }
 
 struct LoginButtonsModule: View {
     var body: some View {
-        Button {
-            login()
-        } label: {
-            Text("INICIAR SESIÓN")
-                .fontWeight(.bold)
-                .foregroundColor(.white)
-                .frame(maxWidth: .infinity, alignment: .center)
-                .padding(EdgeInsets(top: 11, leading: 18, bottom: 11, trailing: 18))
-                .overlay(
-                    RoundedRectangle(cornerRadius: 6)
-                        .stroke(Color("DarkCyanColor"), lineWidth: 1)
-                        .shadow(color: .white, radius: 6)
-                )
-        }
         Spacer(minLength: 100)
         Text("Inicia sesión con redes sociales")
             .font(.headline)
@@ -119,6 +133,6 @@ struct LoginView_Previews: PreviewProvider {
 }
 
 
-func login() {
-    print("Login")
+func login(_ isHomeActive: inout Bool) {
+    isHomeActive = true
 }

@@ -9,20 +9,22 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        ZStack {
-            Spacer()
-            Color("BackgroundColor")
-                .ignoresSafeArea()
-            
-            VStack {
-                Image("applogo")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 250)
-                    .padding(.bottom, 60)
+        NavigationView {
+            ZStack {
+                Spacer()
+                Color("BackgroundColor")
+                    .ignoresSafeArea()
                 
-                LoginAndRegistryView()
-            }
+                VStack {
+                    Image("applogo")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 250)
+                        .padding(.bottom, 60)
+                    
+                    LoginAndRegistryView()
+                }
+            }.navigationBarHidden(true)
         }
     }
 }
@@ -57,8 +59,6 @@ struct LoginAndRegistryView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        Image("pantalla1")
-            .resizable()
         ContentView()
     }
 }
