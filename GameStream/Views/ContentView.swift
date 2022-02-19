@@ -45,7 +45,7 @@ struct LoginAndRegistryView: View {
                 Spacer()
             }
             Spacer(minLength: 42)
-            if !showLogin {
+            if showLogin {
                 LoginView()
             }else {
                 RegistryView()

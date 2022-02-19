@@ -50,6 +50,7 @@ struct RegistryView: View {
                             .foregroundColor(.gray)
                     }
                     TextField("", text: $email)
+                        .foregroundColor(.white)
                 }
                 
                 Divider().frame(height: 1)
@@ -66,6 +67,7 @@ struct RegistryView: View {
                             .foregroundColor(.gray)
                     }
                     SecureField("", text: $password)
+                        .foregroundColor(.white)
                 }
                 
                 Divider().frame(height: 1)
@@ -82,6 +84,7 @@ struct RegistryView: View {
                             .foregroundColor(.gray)
                     }
                     SecureField("", text: $confPassword)
+                        .foregroundColor(.white)
                 }
                 
                 Divider().frame(height: 1)

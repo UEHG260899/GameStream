@@ -23,6 +23,7 @@ struct LoginView: View {
                             .foregroundColor(.gray)
                     }
                     TextField("", text: $email)
+                        .foregroundColor(.white)
                 }
                 
                 Divider().frame(height: 1)
@@ -39,6 +40,7 @@ struct LoginView: View {
                             .foregroundColor(.gray)
                     }
                     SecureField("", text: $password)
+                        .foregroundColor(.white)
                 }
                 
                 Divider().frame(height: 1)
