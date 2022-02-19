@@ -53,7 +53,7 @@ struct LoginView: View {
                     .padding(.bottom)
                 
                 LoginButtonsModule()
-            }.padding(.horizontal, 77)
+            }.padding(.horizontal)
         }
     }
 }
@@ -113,7 +113,6 @@ struct LoginButtonsModule: View {
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-        Image("pantalla1")
     }
 }
 
