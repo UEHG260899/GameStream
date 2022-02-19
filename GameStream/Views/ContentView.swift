@@ -54,17 +54,6 @@ struct LoginAndRegistryView: View {
     }
 }
 
-struct LoginView: View {
-    var body: some View {
-        Text("Login view")
-    }
-}
-
-struct RegistryView: View {
-    var body: some View {
-        Text("Registry view")
-    }
-}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
