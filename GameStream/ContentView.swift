@@ -9,13 +9,67 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        ZStack {
+            Spacer()
+            Color("BackgroundColor")
+                .ignoresSafeArea()
+            
+            VStack {
+                Image("applogo")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 250)
+                    .padding(.bottom, 60)
+                
+                LoginAndRegistryView()
+            }
+        }
+    }
+}
+
+struct LoginAndRegistryView: View {
+    
+    @State var showLogin: Bool = true
+    
+    var body: some View {
+        VStack {
+            HStack {
+                Spacer()
+                Button("INICIA SESIÓN") {
+                    showLogin = true
+                }.foregroundColor(showLogin ? .white : .gray)
+                Spacer()
+                Button("REGISTRATE") {
+                    showLogin = false
+                }.foregroundColor(showLogin ? .gray : .white)
+                Spacer()
+            }
+            Spacer(minLength: 42)
+            if showLogin {
+                LoginView()
+            }else {
+                RegistryView()
+            }
+        }
+    }
+}
+
+struct LoginView: View {
+    var body: some View {
+        Text("Login view")
+    }
+}
+
+struct RegistryView: View {
+    var body: some View {
+        Text("Registry view")
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
+        Image("pantalla1")
+            .resizable()
         ContentView()
     }
 }
