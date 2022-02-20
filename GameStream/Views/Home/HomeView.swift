@@ -13,9 +13,13 @@ struct HomeView: View {
     @State var selectedTab: Int = 2
     
     init() {
-        let appearance = UITabBarAppearance()
+        let appearance: UITabBarAppearance = UITabBarAppearance()
+        appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = UIColor(named: "TabBarColor")
+        UITabBar.appearance().standardAppearance = appearance
         if #available(iOS 15.0, *) {
+            let appearance = UITabBarAppearance()
+            appearance.backgroundColor = UIColor(named: "TabBarColor")
             UITabBar.appearance().scrollEdgeAppearance = appearance
         }
     }
