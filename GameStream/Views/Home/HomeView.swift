@@ -35,8 +35,7 @@ struct HomeView: View {
                     Image(systemName: "gamecontroller")
                     Text("Juegos")
                 }.tag(1)
-            Text("Home")
-                .font(.system(size: 30 , weight: .bold, design: .rounded))
+            HomeScreenView()
                 .tabItem {
                     Image(systemName: "house")
                     Text("Inicio")
@@ -48,7 +47,7 @@ struct HomeView: View {
                     Image(systemName: "heart")
                     Text("Favoritos")
                 }.tag(3)
-        }
+        }.accentColor(.white)
     }
     
     
