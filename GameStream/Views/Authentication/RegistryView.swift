@@ -101,7 +101,7 @@ struct RegistryView: View {
 struct RegistryButtonsModule: View {
     var body: some View {
         Button {
-            login()
+            print("Registry")
         } label: {
             Text("REGISTRARSE")
                 .fontWeight(.bold)

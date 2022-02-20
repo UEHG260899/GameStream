@@ -13,6 +13,8 @@
 		A47AAFC227C18312004B0723 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A47AAFC127C18312004B0723 /* Preview Assets.xcassets */; };
 		A47AAFCB27C18AC0004B0723 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47AAFCA27C18AC0004B0723 /* LoginView.swift */; };
 		A47AAFCD27C18AFA004B0723 /* RegistryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47AAFCC27C18AFA004B0723 /* RegistryView.swift */; };
+		A47AAFD027C1A572004B0723 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47AAFCF27C1A572004B0723 /* HomeView.swift */; };
+		A47AAFD227C1BC7F004B0723 /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47AAFD127C1BC7F004B0723 /* HomeScreenView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +25,8 @@
 		A47AAFC127C18312004B0723 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A47AAFCA27C18AC0004B0723 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		A47AAFCC27C18AFA004B0723 /* RegistryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistryView.swift; sourceTree = "<group>"; };
+		A47AAFCF27C1A572004B0723 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		A47AAFD127C1BC7F004B0723 /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +78,7 @@
 		A47AAFC827C18A9E004B0723 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A47AAFCE27C1A568004B0723 /* Home */,
 				A47AAFC927C18AB0004B0723 /* Authentication */,
 				A47AAFBC27C18311004B0723 /* ContentView.swift */,
 			);
@@ -87,6 +92,15 @@
 				A47AAFCC27C18AFA004B0723 /* RegistryView.swift */,
 			);
 			path = Authentication;
+			sourceTree = "<group>";
+		};
+		A47AAFCE27C1A568004B0723 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				A47AAFCF27C1A572004B0723 /* HomeView.swift */,
+				A47AAFD127C1BC7F004B0723 /* HomeScreenView.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -162,6 +176,8 @@
 				A47AAFCB27C18AC0004B0723 /* LoginView.swift in Sources */,
 				A47AAFCD27C18AFA004B0723 /* RegistryView.swift in Sources */,
 				A47AAFBD27C18311004B0723 /* ContentView.swift in Sources */,
+				A47AAFD227C1BC7F004B0723 /* HomeScreenView.swift in Sources */,
+				A47AAFD027C1A572004B0723 /* HomeView.swift in Sources */,
 				A47AAFBB27C18311004B0723 /* GameStreamApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -301,6 +317,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -310,7 +327,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -330,6 +347,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -339,7 +357,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
