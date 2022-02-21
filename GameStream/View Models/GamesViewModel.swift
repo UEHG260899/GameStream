@@ -7,7 +7,7 @@
 
 import Foundation
 
-class GameViewModel: ObservableObject {
+class GamesViewModel: ObservableObject {
     @Published var gamesInfo: [Game] = [Game]()
     typealias GameArray = [Game]
     init() {

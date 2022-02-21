@@ -9,7 +9,7 @@ import SwiftUI
 import Kingfisher
 
 struct GamesView: View {
-    @ObservedObject var gameViewModel = GameViewModel()
+    @ObservedObject var gameViewModel = GamesViewModel()
     @State var gameViewIsActive: Bool = false
     @State var url: String = ""
     @State var title: String = ""
@@ -49,7 +49,7 @@ struct GamesView: View {
                                 description = game.description
                                 publication = game.publicationYear
                                 
-                                print("Pulse el juego")
+                                gameViewIsActive = true
                             } label: {
                                 KFImage(URL(string: game.galleryImages.first!)!)
                                     .resizable()
@@ -65,6 +65,13 @@ struct GamesView: View {
                 }
                 
             }.padding(.horizontal, 6)
+            
+            NavigationLink(isActive: $gameViewIsActive) {
+                GameView(url: url, title: title, rate: rate, publication: publication, description: description, tags: tags, imgUrls: imgUrls)
+            } label: {
+                EmptyView()
+            }
+
             
         }.navigationBarHidden(true)
             .navigationBarBackButtonHidden(true)
