@@ -10,6 +10,11 @@ import Foundation
 struct Games: Codable {
     var games: [Game]
 }
+
+struct Results: Codable {
+    var results: [Game]
+}
+
 struct Game: Codable, Hashable {
     var title: String
     var studio: String

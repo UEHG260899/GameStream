@@ -35,9 +35,17 @@ struct HomeScreenView: View {
 struct HomeModule: View {
     @State var searchString: String = ""
     @State var isGameEmpty: Bool = false
-    @State var url = "https://cdn.cloudflare.steamstatic.com/steam/apps/256658589/movie480.mp4"
     @State var isPlayerActive = false
-    let urlVideos:[String] = ["https://cdn.cloudflare.steamstatic.com/steam/apps/256658589/movie480.mp4","https://cdn.cloudflare.steamstatic.com/steam/apps/256671638/movie480.mp4","https://cdn.cloudflare.steamstatic.com/steam/apps/256720061/movie480.mp4","https://cdn.cloudflare.steamstatic.com/steam/apps/256814567/movie480.mp4","https://cdn.cloudflare.steamstatic.com/steam/apps/256705156/movie480.mp4","https://cdn.cloudflare.steamstatic.com/steam/apps/256801252/movie480.mp4","https://cdn.cloudflare.steamstatic.com/steam/apps/256757119/movie480.mp4"]
+    @ObservedObject var searchGameViewModel = SearchGameViewModel()
+    @State var isGameViewActive: Bool = false
+    @State var url: String = ""
+    @State var title: String = ""
+    @State var rate: String = ""
+    @State var publication: String = ""
+    @State var description: String = ""
+    @State var tags: [String] = [String]()
+    @State var imgUrls: [String] = [String]()
+    @State var studio: String = ""
     
     var body: some View {
         HStack {
@@ -74,7 +82,7 @@ struct HomeModule: View {
                 .padding(.top)
             ZStack {
                 Button {
-                    url = urlVideos.first!
+                    url = imgUrls.first!
                     isPlayerActive = true
                 } label: {
                     VStack(spacing: 0) {
@@ -106,7 +114,7 @@ struct HomeModule: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
                     Button {
-                        url = urlVideos.first!
+                        url = imgUrls.first!
                         isPlayerActive = true
                     } label: {
                         Image("game.witcher")
@@ -115,7 +123,7 @@ struct HomeModule: View {
                     }
                     
                     Button {
-                        url = urlVideos.first!
+                        url = imgUrls.first!
                         isPlayerActive = true
                     } label: {
                         Image("game.spiderman")
@@ -124,7 +132,7 @@ struct HomeModule: View {
                     }
                     
                     Button {
-                        url = urlVideos.first!
+                        url = imgUrls.first!
                         isPlayerActive = true
                     } label: {
                         Image("game.lastofus.two")
@@ -136,9 +144,8 @@ struct HomeModule: View {
             }
         }
         
-        NavigationLink(isActive: $isPlayerActive) {
-            VideoPlayer(player: AVPlayer(url: URL(string: url)!))
-                .frame(width: 400, height: 300)
+        NavigationLink(isActive: $isGameViewActive) {
+            GameView(url: url, title: title, rate: rate, publication: publication, description: description, tags: tags, imgUrls: imgUrls, studio: studio)
         } label: {
             EmptyView()
         }
@@ -147,8 +154,23 @@ struct HomeModule: View {
     }
     
     func search(searchQuery: String) {
-        print("Mostrar juego")
-        isGameEmpty = true
+        searchGameViewModel.searchGame(gameName: searchQuery)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.3) {
+            if searchGameViewModel.gameInfo.count == 0 {
+                isGameEmpty = true
+            }else {
+                url = searchGameViewModel.gameInfo.first!.videosUrls.mobile
+                title = searchGameViewModel.gameInfo.first!.title
+                studio = searchGameViewModel.gameInfo.first!.studio
+                rate = searchGameViewModel.gameInfo.first!.contentRaiting
+                publication = searchGameViewModel.gameInfo.first!.publicationYear
+                description = searchGameViewModel.gameInfo.first!.description
+                tags = searchGameViewModel.gameInfo.first!.tags
+                imgUrls = searchGameViewModel.gameInfo.first!.galleryImages
+                isGameViewActive = true
+            }
+        }
     }
 }
 
