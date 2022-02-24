@@ -67,7 +67,7 @@ struct GamesView: View {
             }.padding(.horizontal, 6)
             
             NavigationLink(isActive: $gameViewIsActive) {
-                GameView(url: url, title: title, rate: rate, publication: publication, description: description, tags: tags, imgUrls: imgUrls)
+                GameView(url: url, title: title, rate: rate, publication: publication, description: description, tags: tags, imgUrls: imgUrls, studio: studio)
             } label: {
                 EmptyView()
             }
