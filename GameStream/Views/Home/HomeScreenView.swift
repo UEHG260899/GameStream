@@ -34,6 +34,7 @@ struct HomeScreenView: View {
 
 struct HomeModule: View {
     @State var searchString: String = ""
+    @State var isGameEmpty: Bool = false
     @State var url = "https://cdn.cloudflare.steamstatic.com/steam/apps/256658589/movie480.mp4"
     @State var isPlayerActive = false
     let urlVideos:[String] = ["https://cdn.cloudflare.steamstatic.com/steam/apps/256658589/movie480.mp4","https://cdn.cloudflare.steamstatic.com/steam/apps/256671638/movie480.mp4","https://cdn.cloudflare.steamstatic.com/steam/apps/256720061/movie480.mp4","https://cdn.cloudflare.steamstatic.com/steam/apps/256814567/movie480.mp4","https://cdn.cloudflare.steamstatic.com/steam/apps/256705156/movie480.mp4","https://cdn.cloudflare.steamstatic.com/steam/apps/256801252/movie480.mp4","https://cdn.cloudflare.steamstatic.com/steam/apps/256757119/movie480.mp4"]
@@ -41,10 +42,12 @@ struct HomeModule: View {
     var body: some View {
         HStack {
             Button {
-                search()
+                search(searchQuery: searchString)
             } label: {
                 Image(systemName: "magnifyingglass")
                     .foregroundColor(searchString.isEmpty ? .yellow : Color("DarkCyanColor"))
+            }.alert(isPresented: $isGameEmpty) {
+                Alert(title: Text("Error"), message: Text("No se encontrö el juego"), dismissButton: .default(Text("Aceptar")))
             }
 
             ZStack(alignment: .leading) {
@@ -139,7 +142,13 @@ struct HomeModule: View {
         } label: {
             EmptyView()
         }
+        
 
+    }
+    
+    func search(searchQuery: String) {
+        print("Mostrar juego")
+        isGameEmpty = true
     }
 }
 
@@ -206,6 +215,3 @@ struct HomeScreenView_Previews: PreviewProvider {
     }
 }
 
-func search() {
-    
-}
